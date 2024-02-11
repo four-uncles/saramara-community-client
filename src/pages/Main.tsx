@@ -1,4 +1,4 @@
 const Main = () => {
-  return <div>홈 페이지</div>;
+  return <div className="font-bold underline">홈 페이지</div>;
 };
 export default Main;
