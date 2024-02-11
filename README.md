@@ -4,3 +4,4 @@
 - TS
 - Vite
 - react-router-dom
+- tailwind css
