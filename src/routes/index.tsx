@@ -3,6 +3,7 @@ import Main from '@/pages/Main';
 import Layout from '@/pages/Layout';
 import PostDetail from '@/pages/PostDetail';
 import PostWrite from '@/pages/PostWrite';
+import About from '@/pages/About';
 import Login from '@/pages/Login';
 import SignUp from '@/pages/SignUp';
 import { ROUTE_PATH } from '@/constants/path.ts';
@@ -16,6 +17,7 @@ const routes = [
       { index: true, element: <Main /> },
       { path: ROUTE_PATH.POST_DETAIL, element: <PostDetail /> },
       { path: ROUTE_PATH.POST_WRITE, element: <PostWrite /> },
+      { path: ROUTE_PATH.ABOUT, element: <About /> },
     ],
   },
   {

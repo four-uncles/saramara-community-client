@@ -1,9 +1,10 @@
+import Header from '@/components/common/Header';
 import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
     <div>
-      <header>헤더</header>
+      <Header />
       <Outlet />
       <footer>푸터</footer>
     </div>
