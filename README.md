@@ -5,3 +5,4 @@
 - Vite
 - react-router-dom
 - tailwind css
+- axios
