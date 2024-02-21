@@ -18,16 +18,9 @@ const routes = [
       { path: ROUTE_PATH.POST_DETAIL, element: <PostDetail /> },
       { path: ROUTE_PATH.POST_WRITE, element: <PostWrite /> },
       { path: ROUTE_PATH.ABOUT, element: <About /> },
+      { path: ROUTE_PATH.LOGIN, element: <Login /> },
+      { path: ROUTE_PATH.SIGNUP, element: <SignUp /> },
     ],
-  },
-  {
-    path: ROUTE_PATH.LOGIN,
-    element: <Login />,
-  },
-
-  {
-    path: ROUTE_PATH.SIGNUP,
-    element: <SignUp />,
   },
 ];
 
