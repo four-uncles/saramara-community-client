@@ -21,3 +21,10 @@
   font-weight: 300;
   font-style: normal;
 }
+
+.input-default {
+  @apply p-2 my-2 border border-solid rounded-md outline-none border-slate-300 placeholder:font-thin placeholder:text-sm;
+}
+.input-default-err-msg {
+  @apply text-red-500 text-xs h-4;
+}
