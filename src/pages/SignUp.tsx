@@ -1,12 +1,23 @@
+// import { signUp } from '@/api/member';
 import { ROUTE_PATH } from '@/constants/path';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+  // const [memberId, setMemberId] = useState('');
+  // const [nickname, setNickname] = useState('');
+  // const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     setErrMsg('에러 테스트');
+    // const signPayload = {
+    //   memberId,
+    //   nickname,
+    //   password,
+    // };
+    // const res = await signUp(signPayload);
+    // console.log('회원가입 :', res);
   };
 
   return (
