@@ -1,7 +1,7 @@
 ---
 name: "[Feature] Issue Template"
 about: 기능 템플릿
-title: "[Feat] : "
+title: "[Feat] "
 labels: ''
 assignees: ''
 
