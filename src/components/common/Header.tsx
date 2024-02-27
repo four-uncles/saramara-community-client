@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center p-6">
       <Link to={ROUTE_PATH.MAIN}>
-        <img alt="logo" src="public/images/Logo.svg" />
+        <img alt="logo" src="/images/Logo.svg" />
       </Link>
       <div className="mr-4 font-gmarket font-medium">
         <Link to={ROUTE_PATH.ABOUT} className="mr-4">
