@@ -6,3 +6,4 @@
 - react-router-dom
 - tailwind css
 - axios
+- react-hook-form
