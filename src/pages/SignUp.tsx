@@ -77,16 +77,39 @@ const SignUp = () => {
             className="w-full input-default"
             placeholder="비밀번호를 입력해주세요."
             type="password"
-            {...register('password', { required: true })}
+            {...register('password', {
+              required: true,
+              minLength: {
+                value: 6,
+                message: '6자 이상 18자 이하의 비밀번호를 입력해주세요.',
+              },
+              maxLength: {
+                value: 18,
+                message: '18자 이하의 비밀번호를 입력해주세요',
+              },
+            })}
           />
-          {errors.password && <span className="text-xs text-red-500 pl-2">비밀번호를 입력해주세요</span>}
+          {errors.password && !errors.password && (
+            <span className="text-xs text-red-500 pl-2">비밀번호를 입력해주세요</span>
+          )}
+          {errors.password?.message && <span className="text-xs text-red-500 pl-2">{errors.password.message}</span>}
 
           <div className="font-bold text-sm mt-2">비밀번호 확인</div>
           <input
             className="w-full input-default"
             placeholder="재확인할 비밀번호를 입력해주세요."
             type="password"
-            {...register('passwordConfirm', { required: true })}
+            {...register('passwordConfirm', {
+              required: true,
+              minLength: {
+                value: 6,
+                message: '6자 이상 18자 이하의 비밀번호를 입력해주세요.',
+              },
+              maxLength: {
+                value: 18,
+                message: '18자 이하의 비밀번호를 입력해주세요',
+              },
+            })}
           />
           {errors.passwordConfirm && !errors.passwordConfirm?.message && (
             <span className="text-xs text-red-500 pl-2">확인용 비밀번호를 입력해주세요</span>
