@@ -28,3 +28,17 @@
 .input-default-err-msg {
   @apply text-red-500 text-xs h-4;
 }
+
+@layer utilities {
+  .scrollbar_option::-webkit-scrollbar {
+    width: 3px;
+  }
+  .scrollbar_option::-webkit-scrollbar-thumb {
+    background-color: lightGray;
+    border-radius: 15px;
+    scrollbar-width: thin;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
