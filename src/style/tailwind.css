@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+input,
+textarea {
+  outline: none;
+}
+
 /* Font */
 @font-face {
   font-family: 'Gmarket';
