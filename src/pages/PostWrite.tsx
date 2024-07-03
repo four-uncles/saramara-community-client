@@ -5,7 +5,7 @@ type PostType = {
   img: File | string;
   title: string;
   content: string;
-  cost: number;
+  cost: number | null;
 };
 
 const PostWrite = () => {
@@ -17,7 +17,7 @@ const PostWrite = () => {
       img: '',
       title: '',
       content: '',
-      cost: 0,
+      cost: null,
     },
   ]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -187,7 +187,9 @@ const PostWrite = () => {
                   />
                   <div className="mt-4 flex justify-between mb-3">
                     <div className="text-slate-600 font-bold">금액대 선택</div>
-                    <div className="text-blue-500 font-bold">{post?.cost === 0 ? '미정' : post?.cost + '만원대'}</div>
+                    <div className="text-blue-500 font-bold">
+                      {!post?.cost ? '미정' : post.cost <= 0 ? '만원대' : post.cost + '만원대'}
+                    </div>
                   </div>
                   <input
                     id="rangeInput"
