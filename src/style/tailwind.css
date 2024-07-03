@@ -6,6 +6,17 @@ input,
 textarea {
   outline: none;
 }
+textarea {
+  resize: none;
+}
+textarea::-webkit-scrollbar {
+  width: 3px;
+}
+textarea::-webkit-scrollbar-thumb {
+  background-color: lightGray;
+  border-radius: 15px;
+  scrollbar-width: thin;
+}
 
 /* Font */
 @font-face {
@@ -45,5 +56,14 @@ textarea {
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  .rangeInput {
+    width: 100%;
+    background: linear-gradient(to right, #c8d9ff 0%, #c8d9ff 50%, #ececec 50%, #ececec 100%);
+    border-radius: 8px;
+    outline: none;
+    transition: background 450ms ease-in;
+    -webkit-appearance: none;
+    accent-color: #8aafff;
   }
 }

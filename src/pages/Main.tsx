@@ -115,7 +115,7 @@ const Main = () => {
       <div className="font-black font-gmarket pt-10 pb-4 mt-20">댓글 TOP 10 </div>
       <div className="flex w-full overflow-x-scroll no-scrollbar">
         {commentsPost?.map((bestComment, i) => (
-          <Link to={'/'} key={i} className="mr-2">
+          <Link to={'/'} key={bestComment.title + i} className="mr-2">
             <div className="w-[271px] h-[200px] bg-slate-200 rounded-2xl"></div>
 
             <div className="mt-2 flex justify-between items-center">
@@ -129,8 +129,8 @@ const Main = () => {
       <div className="font-black font-gmarket pt-10 pb-4 mt-20">전체 게시글</div>
 
       <div className="grid grid-cols-4 gap-x-1 gap-y-9">
-        {totalPost?.map(totalPost => (
-          <Link to={'/'} key={totalPost.userId} className="mr-2">
+        {totalPost?.map((totalPost, idx) => (
+          <Link to={'/'} key={totalPost.userId + idx} className="mr-2">
             <div className="w-[271px] h-[200px] bg-slate-200 rounded-2xl"></div>
 
             <h3 className="font-bold mt-2">{totalPost.title}</h3>

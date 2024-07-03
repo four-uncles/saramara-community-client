@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 
 type PostType = {
   id: number;
@@ -28,9 +28,10 @@ const PostWrite = () => {
     }
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>, i?: number) => {
     const files = event.target.files ? event.target.files : null;
     if (files) {
+      if (files.length > 5) return;
       const fileArray = Array.from(files);
       const newPosts = fileArray?.map(file => ({
         id: 0,
@@ -41,11 +42,10 @@ const PostWrite = () => {
       }));
       if (!posts[0].img) {
         setPosts(newPosts);
+      } else {
+        setPosts([...posts, ...newPosts]);
       }
-      setPosts([...posts, ...newPosts]);
-
-      if (files.length > 5) return;
-
+      console.log(i);
       const imgFiles = previewImg;
       for (let i = 0; i < files.length; i++) {
         imgFiles.push(URL.createObjectURL(files[i]));
@@ -53,17 +53,32 @@ const PostWrite = () => {
       setPreviewImg(imgFiles);
     }
   };
+  const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, i: number) => {
+    const newPosts = [...posts];
+    newPosts[i] = { ...newPosts[i], [e.target.name]: e.target.value };
+    setPosts(newPosts);
+  };
 
-  useEffect(() => {}, []);
+  const handleRangeInput = (e: FormEvent<HTMLInputElement>, i: number) => {
+    const target = e.currentTarget;
+    const max = target.max ? parseFloat(target.max) : 100;
+    const value = target.value ? parseFloat(target.value) : 0;
+    const gradientValue = (100 / max) * value;
+
+    target.style.background = `linear-gradient(to right, #c8d9ff 0%, #c8d9ff ${gradientValue}%, rgb(236, 236, 236) ${gradientValue}%, rgb(236, 236, 236) 100%)`;
+
+    const newPosts = [...posts];
+    newPosts[i] = { ...newPosts[i], [target.name]: target.value };
+    setPosts(newPosts);
+  };
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     setTitle(target.value);
-    console.log(title);
   };
 
   const onSubmit = () => {
-    // console.log('응답 결과', res);
+    console.log('요청', title, posts);
   };
 
   return (
@@ -78,7 +93,7 @@ const PostWrite = () => {
             />
             <button
               className="w-[10%] bg-accent-300 text-white rounded-lg font-bold text-lg"
-              type="submit"
+              type="button"
               onClick={onSubmit}
             >
               등 록
@@ -104,7 +119,7 @@ const PostWrite = () => {
             {previewImg.length <= 5 && previewImg.length >= 1 ? (
               <button
                 type="button"
-                className="bg-slate-100 border-slate-400 border border-dashed rounded-md w-[50px] h-[50px]"
+                className="bg-slate-100 border-slate-400 border border-dashed rounded-md w-[50px] h-[50px] hover:bg-[#edf0f3]"
                 onClick={handleBoxClick}
               >
                 {' '}
@@ -138,7 +153,7 @@ const PostWrite = () => {
                         ref={fileInputRef}
                         className="hidden"
                         multiple
-                        onChange={handleFileChange}
+                        onChange={e => handleFileChange(e, i)}
                       />
                       <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -159,17 +174,32 @@ const PostWrite = () => {
                   <input
                     className="w-full flex-auto text-slate-500 text-md font-bold placeholder:text-slate-500 text-lg"
                     placeholder="제품명 입력"
+                    name="title"
                     defaultValue={post?.title}
+                    onChange={e => handleInput(e, i)}
                   />
                   <textarea
                     className="w-full h-[120px] mt-3 text-sm flex-auto text-slate-600 text-md placeholder:text-slate-500"
-                    placeholder="내용 입력"
+                    placeholder="제품에 대해서 설명해주세요"
+                    name="content"
                     defaultValue={post?.content}
+                    onChange={e => handleInput(e, i)}
                   />
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-between mb-3">
                     <div className="text-slate-600 font-bold">금액대 선택</div>
-                    <div className="text-blue-500 font-bold">{post?.cost}만원</div>
+                    <div className="text-blue-500 font-bold">{post?.cost === 0 ? '미정' : post?.cost + '만원대'}</div>
                   </div>
+                  <input
+                    id="rangeInput"
+                    className="rangeInput"
+                    style={{}}
+                    max="100"
+                    min="0"
+                    step="10"
+                    type="range"
+                    name="cost"
+                    onInput={e => handleRangeInput(e, i)}
+                  />
                   <div className="flex justify-between text-slate-400 text-xs mt-2">
                     <div>만원</div>
                     <div>백만원</div>
