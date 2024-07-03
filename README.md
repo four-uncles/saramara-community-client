@@ -7,3 +7,8 @@
 - tailwind css
 - axios
 - react-hook-form
+
+#### 테스트
+
+- npm i
+- npm run dev
