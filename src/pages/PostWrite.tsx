@@ -85,14 +85,14 @@ const PostWrite = () => {
     <div className="w-full flex justify-center">
       <form className="w-[80%] mt-6">
         <div className="flex justify-end">
-          <div className="border-b h-16 flex mb-8 w-[91%]">
+          <div className="w-full border-b h-16 flex mb-8 md:w-[91%]">
             <input
-              className="rounded-lg flex-auto text-slate-400 text-2xl font-bold placeholder:text-slate-300"
+              className="w-[80%] md:w-[90%] rounded-lg text-slate-400 text-2xl font-bold placeholder:text-slate-300"
               placeholder="질문을 입력하세요."
               onChange={onChangeInput}
             />
             <button
-              className="w-[10%] bg-accent-300 text-white rounded-lg font-bold text-lg"
+              className="w-[20%] md:w-[10%] bg-accent-300 text-white rounded-lg font-bold text-lg"
               type="button"
               onClick={onSubmit}
             >
@@ -101,17 +101,17 @@ const PostWrite = () => {
           </div>
         </div>
 
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* 이미지 목록 */}
-          <div className="w-[10%]">
-            <ul>
+          <div className="flex flex-row md:flex-col md:w-[10%]">
+            <ul className="flex flex-row md:flex-col">
               {previewImg.map((img, i) => (
                 // <li key={img.id} className="bg-slate-100 rounded-md w-[50px] h-[50px] mb-3">
                 <img
                   key={i}
                   src={img}
                   alt="post-img"
-                  className="bg-slate-100 rounded-md w-[50px] h-[50px] mb-3 object-cover"
+                  className="bg-slate-100 rounded-md w-[50px] h-[50px] mb-3 object-cover mr-3 md:mr-0"
                 />
                 // </li>
               ))}
@@ -139,9 +139,9 @@ const PostWrite = () => {
           {/* 제품 목록 */}
           <ul className="w-full flex flex-col">
             {posts?.map((post, i) => (
-              <div className="flex justify-between mb-8" key={post?.id + i}>
+              <div className="flex flex-col justify-between mb-16 md:flex-row md:mb-8" key={post?.id + i}>
                 {posts?.length <= 1 ? (
-                  <div className="w-[40%]">
+                  <div className="w-full md:w-[40%]">
                     <div
                       className="bg-slate-100 h-[300px] w-full flex flex-col justify-center items-center cursor-pointer hover:bg-[#edf0f3]"
                       onClick={handleBoxClick}
@@ -166,11 +166,11 @@ const PostWrite = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="w-[40%]">
+                  <div className="w-full md:w-[40%]">
                     <img src={previewImg[i]} alt="post-img" className="h-[300px] w-full bg-slate-100 object-contain" />
                   </div>
                 )}
-                <div className="w-[55%]">
+                <div className="w-full mt-2 md:w-[55%] md:mt-0">
                   <input
                     className="w-full flex-auto text-slate-500 text-md font-bold placeholder:text-slate-500 text-lg"
                     placeholder="제품명 입력"
