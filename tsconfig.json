@@ -4,9 +4,11 @@
     "paths": {
       "@/*": ["src/*"],
     },
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["vite-plugin-svgr/client", "vite/client"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -24,7 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src", "**/*.ts", "custom.d.ts"],
+  "include": ["src", "**/*.ts", "custom.d.ts", ".env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "types": ["vite-plugin-svgr/client"],
 }
